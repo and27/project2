@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+{% block title %} Flack Chat {% endblock %}
+
+{% block body %}
+	<h1 id="title">Welcome to <b>Flack Chat</b>
+	</h1>
+	<h4 class="grayC marginw ">Create or join to a channel !</h4>
+	<form action="/create" method="post">
+		<div class="form-group">
+			<input type="text" class="form-control text-center" id="channel" autofocus name="channel">
+		</div>
+<div class="text-center">
+		<button class="btn btn-danger largeButton" type="submit">Create</button></div>
+	</form>
+
+	<script>
+		//Remember if the user previously access to a channel
+		if (localStorage.getItem('last_channel')){
+			let channel  = localStorage.getItem('last_channel');
+			window.location.replace('channels/'+ channel);}
+	</script>
+{% endblock %}
+
+

@@ -1,0 +1,18 @@
+{% extends "template.html"%}
+
+{% block title %}
+Signin
+{% endblock %}
+
+{% block body %}
+	<h1 id="title">Flack Chat
+	</h1>
+	<h4 class="marginw grayC"> Enter your <b>username</b> and sign in to start chatting ! </h4>
+		<form action="/signin" method="post">
+			<div class="form-group ">
+				<input type="text" class="form-control" id="username" autofocus name="username">
+			</div>
+<div class="text-center">
+			<button class="btn btn-danger largeButton" type="submit">Sign In </button></div>
+		</form>
+{% endblock %}
