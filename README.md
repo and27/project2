@@ -1,6 +1,16 @@
-# Project 2
+# Flack Chat ( Project 2 )
 
-## Web Programming with Python and JavaScript
+The project is a chat app
 
-### https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/
+## Getting Started
 
+THe project is created using socketio 
+
+### Prerequisites
+
+In order to run the code install the dependencies and run flask
+
+```
+pip3 install -r requirements.txt
+flask run
+```
