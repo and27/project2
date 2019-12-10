@@ -58,17 +58,26 @@ def logout():
 
 @app.route("/create", methods=['GET','POST'])
 def create():
-	newChannel = request.form.get("channel")
 
-	if request.method == "POST":
-		if newChannel in channelsCreated:
-			return render_template("error.html", message="The channel already exists!")
-		channelsCreated.append(newChannel)
+   
+    newChannel = request.form.get("channel")
 
-		channelsMessages[newChannel] = deque()
-		return redirect("/channels/"+newChannel)
-	else:
-		return render_template("create.html",channels=channelsCreated)
+    if request.method == "POST":
+
+        if newChannel in channelsCreated:
+            return render_template("error.html", message="that channel already exists!")
+        
+        
+        channelsCreated.append(newChannel)
+
+        
+        channelsMessages[newChannel] = deque()
+
+        return redirect("/channels/" + newChannel)
+    
+    else:
+
+        return render_template("create.html", channels = channelsCreated)
 
 @app.route("/channels/<channel>", methods=['GET','POST'])
 @loginRequired
@@ -82,12 +91,12 @@ def enterChannel(channel):
 @socketio.on("joined", namespace='/')
 def joined():
 	room = session.get('current_channel')
-	joinRoom(room)
+	join_room(room)
 	
 	emit('status',{
 		'user Joined' : session.get('username'),
-		'channel':room,
-		'msg':session.get('username')+'has entered the channel'
+		'channel': room,
+		'msg' : session.get('username')+' has entered the channel'
 		}, room=room)
 		
 @socketio.on("left", namespace='/')
@@ -95,7 +104,7 @@ def left():
 	room = session.get('current_channel')
 	leave_room(room)
 	emit('status',{
-	'msg':session.get('username')+'has left the channel'},room=room)
+	'msg':session.get('username')+' has left the channel'},room=room)
 
 
 @socketio.on('send message')
@@ -110,6 +119,16 @@ def send_msg(msg, timestamp):
 		'timestamp': timestamp,
 		'msg':msg}, room=room)
 		
+@socketio.on('emoji')
+def emoji(timestamp):
+	room = session.get('current_channel')
+	print("Hello World")
+	emit('emoji a',{'timestamp':timestamp}, room=room)
 
+@socketio.on('emoji2')
+def emoji(timestamp):
+	room = session.get('current_channel')
+	print("Hello World")
+	emit('emoji a2',{'timestamp':timestamp}, room=room)
 
 

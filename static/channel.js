@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 
-	console.log('ok');
+	
 	var socket = io.connect(location.protocol+'//'+document.domain+':'+location.port);
 
 	socket.on('connect',()=>{
@@ -52,8 +52,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
             // Clear input
             document.getElementById("comment").value = '';
         });
+
+
+
+
+	document.querySelector('#emoji').addEventListener("click", () => {	
+		
+		 let timestamp = new Date;
+           	 timestamp = timestamp.toLocaleTimeString();
+
+		socket.emit('emoji', timestamp);
+		console.log("message emit emoji");	
+		
     });
-    
+
+document.querySelector('#emoji2').addEventListener("click", () => {	
+		
+		 let timestamp = new Date;
+           	 timestamp = timestamp.toLocaleTimeString();
+
+		socket.emit('emoji2', timestamp);
+		console.log("message emit emoji");	
+		
+    });
+
+	
+})    
+
     // When user joins a channel, add a message and on users connected.
     socket.on('status', data => {
 
@@ -72,5 +97,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
         let row = '<' + `${data.timestamp}` + '> - ' + '[' + `${data.user}` + ']:  ' + `${data.msg}`
         document.querySelector('#chat').value += row + '\n';
     })
+
+socket.on('emoji a',data=>{
+		console.log("received");
+  		document.querySelector("#modal").style.display="block";
+
+		setTimeout(function () {document.querySelector		("#modal").style.display="none"},2000)
+
+
+})
+
+socket.on('emoji a2',data=>{
+		console.log("received");
+  		document.querySelector("#modal2").style.display="block";
+
+		setTimeout(function () {document.querySelector		("#modal2").style.display="none"},2000)
+
+
+})
 });
+
+	
+
+
+
 

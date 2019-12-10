@@ -17,15 +17,41 @@
 		</span>
 		channel
 	</h1>
+	<div >
+	<img class="mx-auto" id="modal" src="../static/emoji.png" style="display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 6vw; /* Location of the box */
+  padding-left: 10vw;
+  left: 0;
+  top: 0;
+  width: 30%; /* Full width */
+  
+  overflow: auto; /* Enable scroll if needed" */
+  
+</div>
+
+<img class="mx-auto" id="modal2" src="../static/emoji2.png" style="display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 6vw; /* Location of the box */
+  padding-left: 10vw;
+  left: 0;
+  top: 0;
+  width: 30%; /* Full width */
+  
+  overflow: auto; /* Enable scroll if needed" */
+  
+</div>
 	
-	<div class="container-channel">
+	<div class="container-channel" >
 		<div id="chat-box" class="list-group">
 		<textarea id="chat" cols="30" rows="10" readonly>
 			{%- if messages -%}
 				{%- for message in messages -%}
-				<{{ message[0]}} - [{{ message[1]}}]:{{message[2]}}{{'\n'}}
+				>{{ message[0]}}- [{{ message[1]}}]:{{message[2]}}{{'\n'}}
 				{%- endfor -%}
-			{% endif %}
+			{%- endif -%}
 		</textarea>
 	</div>
 
@@ -35,15 +61,21 @@
 			<div class="form-group col-sm">
 				<input id="comment" class="form-control" size="50" autocomplete="off" autofocus>
 			</div>
-			<div class="form-group col-sm-2">
-				<button id="send-button" class="btn btn-sucess" type="reset">Send</button>
+<div class="form-group col-sm-1">
+				<button id="send-button" class="btn btn-danger" type="reset">Send</button>
 			</div>
 			<div class="form-group col-sm-1">
-				<button id="leave" type="button" class="btn btn-warning">Leave channel </button>
+				<button id="emoji" class="btn btn-danger" type="button"><img src="../static/emoji.png" style="width:15px"></button>
+			</div>
+<div class="form-group col-sm-1">
+				<button id="emoji2" class="btn btn-danger" type="button"><img src="../static/emoji2.png" style="width:15px"></button>
+			</div>
+			<div class="form-group col-sm-2">
+				<button id="leave" type="button" class="btn btn-dark">Leave channel </button>
 			</div>
 		</div>
 	</div>
-
+	</div>
 
 	
 {% endblock %}
