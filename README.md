@@ -1,10 +1,11 @@
 # Flack Chat ( Project 2 )
 
 The project is a chat app
+https://youtu.be/0LNuQ6pjNs4
 
 ## Getting Started
 
-THe project is created using socketio 
+The project uses socketio 
 
 ### Prerequisites
 
